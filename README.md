@@ -1,7 +1,7 @@
 # BD_1306_1489_1829_1995-Project_FPL
 
-This repository is for Big Data Final project at PES University to analyse various events that happen in a football league (Fantasy Premier League).<br>
-These events are associated to many metrics such as players’ free kick effectiveness, pass accuracy , duel effectiveness , etc. We use streaming data for the analysis.<br>
+This repository is for Big Data Final project at PES University to analyse various events that happen in a football league (Fantasy Premier League).
+These events are associated to many metrics such as players’ free kick effectiveness, pass accuracy , duel effectiveness , etc. We use streaming data for the analysis.
 The matches and the events data were streamed through port 6100, code for which was provided and we used Streaming Spark to read the streamed data.<br>
 The players and teams data were stored in hdfs and taken as command line arguments while running the code. <br>
 Here we have two files namely master.py and stream.py<br>

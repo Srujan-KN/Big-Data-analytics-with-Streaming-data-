@@ -102,10 +102,14 @@ def getMatchData(date,label):
 		TASK 3
 	'''
 	datel=mrdd.filter(lambda x: x['date']==date and x['label']==label)
-	pldata=datel.map(lambda x: MatchData(x)).collect()[0]
-	mdata=json.dumps(pldata,indent=4)
-	with open('match_output.json','w') as f:
-		f.write(mdata)
+	try:
+		pldata=datel.map(lambda x: MatchData(x)).collect()[0]
+		mdata=json.dumps(pldata,indent=4)
+		with open('Matches/match_output.json','w') as f:
+			f.write(mdata)
+	except:
+		with open('Matches/match_output.json','w') as f:
+			f.write('Invalid query')
 
 def findPlayer(name):
 	'''
@@ -143,7 +147,7 @@ def PlayerProfile(name):
 		details['percent_pass_accuracy']=playerprofile[playerId]['percent_pass_accuracy']
 		details['percent_shots_on_target']=playerprofile[playerId]['percent_shots_on_target']
 	pdata=json.dumps(details,indent=4)
-	with open('player_profile_output.json','w') as f:
+	with open('Players/player_profile_output.json','w') as f:
 		f.write(pdata)
 	return details
 
@@ -449,7 +453,7 @@ def predictWin(date,team1,team2):
 			
 			preddata={'team1':{'name':team1['name'], 'winning chance': chance_of_A}, 'team2':{'name':team2['name'], 'winning chance': chance_of_B}}
 			windata=json.dumps(preddata,indent=4)
-			with open('prediction_output.json','w') as f:
+			with open('Pred/prediction_output.json','w') as f:
 				f.write(windata)	
 	if tv==1:
 		print('Player has retired')
@@ -476,6 +480,7 @@ for i in my_list:
 			lines=fo.readlines()
 			for k in lines:
 				k=eval(k)
+				#print(k)
 				playerprofile[k[0]]={}
 				playerprofile[k[0]]['fouls']=k[1][0][0][5]
 				playerprofile[k[0]]['goals']=k[1][0][0][7]

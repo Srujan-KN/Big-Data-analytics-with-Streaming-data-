@@ -141,6 +141,7 @@ def MatchMetric(x):
 		return ((x[0][0]),[pass_acc, duel_eff, free_kick_eff, shots_eff, fouls, own_goals, goals, contr, x[0][1]])
 		
 def TotalPlayerMetric(new, old):
+	new=new[0]
 	if old==None:
 		old=[0,0,0,0,0,0,0,0,-1]
 	new[0]=(new[0]+old[0])/2
@@ -316,10 +317,10 @@ playerdata.pprint()
 playerrating=playerdata.updateStateByKey(PlayerRating)
 playerrating.pprint()
 
-finalplayerdata=matchmetrics.updateStateByKey(TotalPlayerMetric)
-finalplayerdata.pprint()
+#finalplayerdata=matchmetrics.updateStateByKey(TotalPlayerMetric)
+#finalplayerdata.pprint()
 
-playerprofile=finalplayerdata.join(playerrating)
+playerprofile=playerdata.join(playerrating)
 playerprofile.pprint()
 
 crossPlayers = playerprofile.transformWith(CrossPlayers, playerprofile)
@@ -342,5 +343,5 @@ if os.path.exists("data"):
 playerprofile.saveAsTextFiles("data/PlayerProfile")
 
 ssc.start()
-ssc.awaitTermination(50)
+ssc.awaitTermination()
 ssc.stop()

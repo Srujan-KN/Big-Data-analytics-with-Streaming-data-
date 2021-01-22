@@ -1,4 +1,4 @@
-# BD_1306_1489_1829_1995-Project_FPL
+# Big-Data-analytics-with-Streaming-data-
 
 This repository is for Big Data Final project at PES University to analyse various events that happen in a football league (Fantasy Premier League).
 These events are associated to many metrics such as players’ free kick effectiveness, pass accuracy , duel effectiveness , etc. We use streaming data for the analysis.
